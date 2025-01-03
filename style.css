@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  .scrollytelling-container {
+    width: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }  
+  
+  .page {
+    height: 100vh; /* Each page fills the viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.5s ease;
+  }
+  
+  .page .content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1, h2, p {
+    color: #333;
+  }
+  
+  .page:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+  
+  .page:nth-child(even) {
+    background-color: #e0e0e0;
+  }
+
+  .page {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s, transform 1s;
+  }
+  
+  .page.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
