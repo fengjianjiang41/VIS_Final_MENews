@@ -5,7 +5,7 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', 'SimSun', Arial, sans-serif;
     height: 100%;
     overflow-x: hidden;
   }
@@ -35,7 +35,9 @@
   
   h1, h2, p {
     color: #333;
-  }
+    line-height: 1.8; /* Chinese text looks better with slightly larger spacing */
+    font-size: 18px;
+  }  
   
   .page:nth-child(odd) {
     background-color: #f0f0f0;
