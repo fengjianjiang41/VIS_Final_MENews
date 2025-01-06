@@ -33,19 +33,11 @@
       </div>
     </section>
 
-    <section class="page" id="page4">
-      <!-- <div class="content">
-        <h2>Chapter 3</h2>
-        <p>Here comes the 4th page!</p>
-      </div> -->
-      <!-- <div class="content">
-        <h1>欢迎来到故事</h1>
-        <p>这是滚动叙述体验的第一部分。</p>
-      </div> -->
+    <section class="page" id="page4" style="background-color: black;">
       <div class="tree-container">
         <ul class="tree">
           <li>
-            <button>以色列&巴勒斯坦</button>
+            <button style="background: linear-gradient(135deg, #0000ff, #ff0000); color: rgb(255, 255, 255);">以色列&巴勒斯坦</button>
             <ul>
               <li>
                 <button>以色列</button>
@@ -58,58 +50,102 @@
                       <li><button>非国家行为者占领领土</button></li>
                     </ul>
                   </li>
-                  <button>爆炸/远程暴力</button>
-                  <ul>
-                    <li><button>空中/无人机袭击</button></li>
-                    <li><button>炮击/火炮/导弹袭击</button></li>
-                    <li><button>榴弹</button></li>
-                    <li><button>远程爆炸物/地雷/简易爆炸装置</button></li>
-                  </ul>
-              </li>
-              <li>
-                <button>对平民暴力</button>
-                <ul>
-                  <li><button>攻击</button></li>
-                  <li><button>绑架/强迫失踪</button></li>
-                  <li><button>性暴力</button></li>
+                  <li>
+                    <button>爆炸/远程暴力</button>
+                    <ul>
+                      <li><button>空中/无人机袭击</button></li>
+                      <li><button>炮击/火炮/导弹袭击</button></li>
+                      <li><button>榴弹</button></li>
+                      <li><button>远程爆炸物/地雷/简易爆炸装置</button></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button>对平民暴力</button>
+                    <ul>
+                      <li><button>攻击</button></li>
+                      <li><button>绑架/强迫失踪</button></li>
+                      <li><button>性暴力</button></li>
+                    </ul>
+                  </li>
+                  <li><button>其他</button></li>
                 </ul>
               </li>
-              <li><button>其他</button></li>
+              <li>
+                <button>巴勒斯坦</button>
+                <ul>
+                  <li>
+                    <button>战事</button>
+                    <ul>
+                      <li><button>武装冲突</button></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button>爆炸/远程暴力</button>
+                    <ul>
+                      <li><button>空中/无人机袭击</button></li>
+                      <li><button>炮击/火炮/导弹袭击</button></li>
+                      <li><button>榴弹</button></li>
+                      <li><button>远程爆炸物/地雷/简易爆炸装置</button></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button>对平民暴力</button>
+                    <ul>
+                      <li><button>攻击</button></li>
+                      <li><button>绑架/强迫失踪</button></li>
+                      <li><button>性暴力</button></li>
+                    </ul>
+                  </li>
+                  <li><button>其他</button></li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li>
-            <button>巴勒斯坦</button>
-            <ul>
-              <li>
-                <button>战事</button>
-                <ul>
-                  <li><button>武装冲突</button></li>
-                </ul>
-              </li>
-              <li>
-                <button>爆炸/远程暴力</button>
-                <ul>
-                  <li><button>空中/无人机袭击</button></li>
-                  <li><button>炮击/火炮/导弹袭击</button></li>
-                  <li><button>榴弹</button></li>
-                  <li><button>远程爆炸物/地雷/简易爆炸装置</button></li>
-                </ul>
-              </li>
-              <li>
-                <button>对平民暴力</button>
-                <ul>
-                  <li><button>攻击</button></li>
-                  <li><button>绑架/强迫失踪</button></li>
-                  <li><button>性暴力</button></li>
-                </ul>
-              </li>
-              <li><button>其他</button></li>
-            </ul>
-          </li>
-        </ul>
-        </li>
         </ul>
       </div>
+    </section>
+
+    <style>
+      .tree-container ul {
+      list-style-type: none;
+      }
+
+      .tree-container ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 2px; /* Adjust vertical spacing between each button */
+      left: 10px;
+      }
+
+      .tree-container button {
+      font-size: 36px; /* Default font size for buttons */
+      border: none; /* Remove border */
+      outline: none; /* Remove outline */
+      cursor: pointer; /* Change cursor to hand with finger stretched out */
+      }
+
+      .tree-container ul li button {
+      font-size: 30px; /* Font size for buttons inside list items */
+      border: none; /* Remove border */
+      outline: none; /* Remove outline */
+      cursor: pointer; /* Change cursor to hand with finger stretched out */
+      }
+
+      .tree-container ul li ul li button {
+      font-size: 20px; /* Font size for buttons inside nested list items */
+      border: none; /* Remove border */
+      outline: none; /* Remove outline */
+      cursor: pointer; /* Change cursor to hand with finger stretched out */
+      }
+    </style>
+    <style>
+      .tree-container {
+      position: relative;
+      left: 30%;
+      transform: translateX(-10%); 
+      transform: translateY(10%);
+      }
+    </style>
       <!-- Add more pages as needed -->
     </section>
 
