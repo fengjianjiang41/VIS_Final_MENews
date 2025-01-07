@@ -1,60 +1,123 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Noto Sans SC', 'Microsoft YaHei', 'SimSun', Arial, sans-serif;
-    height: 100%;
-    overflow-x: hidden;
-  }
-  
-  .scrollytelling-container {
-    width: 100%;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }  
-  
-  .page {
-    height: 100vh; /* Each page fills the viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: transform 0.5s ease;
-  }
-  
-  .page .content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  h1, h2, p {
-    color: #333;
-    line-height: 1.8; /* Chinese text looks better with slightly larger spacing */
-    font-size: 18px;
-  }  
-  
-  .page:nth-child(odd) {
-    background-color: #f0f0f0;
-  }
-  
-  .page:nth-child(even) {
-    background-color: #e0e0e0;
-  }
+body {
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', 'SimSun', 'STZhongsong', Arial, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+}
 
-  .page {
-    opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1s, transform 1s;
-  }
-  
-  .page.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
+.scrollytelling-container {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  height: 100vh;
+  /* Each page fills the viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.page .content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+p {
+  color: #333;
+  line-height: 1.8;
+  /* Chinese text looks better with slightly larger spacing */
+  font-size: 18px;
+}
+
+.page:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.page:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.page {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s, transform 1s;
+}
+
+.page.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tree-container ul {
+  list-style-type: none;
+}
+
+.tree-container ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 2px;
+  /* Adjust vertical spacing between each button */
+  left: 10px;
+}
+
+.tree-container ul li button {
+  font-size: 36px;
+  /* Font size for buttons inside list items */
+  border: none;
+  /* Remove border */
+  outline: none;
+  /* Remove outline */
+  cursor: pointer;
+  /* Change cursor to hand with finger stretched out */
+  font-family: 'STZhongsong';
+  /* Set Chinese font type */
+  transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+  /* Smooth transition */
+}
+
+.tree-container ul li button:hover {
+  background: white !important;
+  /* Change background color on hover */
+  color: black !important;
+  /* Change text color on hover */
+  font-weight: bold !important;
+  /* Make text bold on hover */
+}
+
+.tree-container ul li ul li button {
+  font-size: 30px;
+  /* Font size for buttons inside nested list items */
+}
+
+
+.tree-container ul li ul li ul li button {
+  font-size: 20px;
+  /* Font size for buttons inside nested list items */
+}
+
+
+.tree-container ul li ul li ul li ul li button {
+  font-size: 16px;
+  /* Font size for buttons inside nested list items */
+}
+
+.tree-container {
+  position: relative;
+  left: 30%;
+  transform: translateX(-10%);
+  transform: translateY(10%);
+}
