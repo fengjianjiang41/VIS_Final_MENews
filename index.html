@@ -152,34 +152,45 @@
           </li>
         </ul>
       </div>
-    </section>
-    <section>
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const buttons = document.querySelectorAll('.tree-button');
-          buttons.forEach(button => {
-            button.addEventListener('click', function () {
-              buttons.forEach(btn => btn.classList.remove('active'));
-              this.classList.add('active');
-            });
-          });
-          buttons[0].classList.add('active'); // Set the root button as active on load
-        });
-      </script>
 
-      <style>
-        .tree-button.active {
-          background: white !important;
-          /* Change this to your desired active color */
-          color: black !important;
-          font-weight: bold !important;
-        }
-      </style>
-    </section>
+      <div style="position: absolute; top: 200px; left: 100px;">
+        <button id="map1-button" class="map-button active">分日图</button>
+        <button id="map2-button" class="map-button">累积图</button>
+      </div>
 
-    <!-- Add more pages as needed -->
+      <div id="chart-container" style="position: absolute; top: 300px; left: 100px; width: 1300px; height: 600px;">
+        <canvas id="chart-canvas" style="width: 100%; height: 100%;"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <div id="note" class="note">
+        <p style="color: white;font-weight: bold;">备注：</p>
+        <ol>
+          <li>所有折线竖直堆叠，以展示每日死亡人数的总和</li>
+          <li>鼠标悬停在每条折线每日的圆圈处，可显示该折线当日的数据</li>
+          <li>横坐标“日期数”的起点0是2024/10/07，并且由于2024年为闰年，因此终点为365，即2024/10/06</li>
+          <li>数据来源为 <a href="https://acleddata.com/data-export-tool/#1730284648932-9740f4cf-3200"
+              target="_blank" style="color: white;">ACLED</a>
+          </li>
+        </ol>
+      </div>
+      <div id="title-image-container" style="position: absolute; top: 60px; left: 80px;">
+        <img src="title1.png" alt="Title Image" id="title-image" style="width: 400px; height: auto;">
+      </div>
+      <div id="title-image-container" style="position: absolute; top: 65px; left: 1300px;">
+        <img src="title2.png" alt="Title Image" id="title-image" style="width: 450px; height: auto;">
+      </div>
     </section>
-    <script src="script.js"></script>
+    <!-- <section>
+      <div id="display"
+        style="position: fixed; right: 0; top: 0; background: rgba(255, 255, 255, 0.8); padding: 10px; border: 1px solid #ccc;">
+      </div>
+      <p id="display-text">Press a button</p> -->
+  </div>
+  </section>
+
+  <!-- Add more pages as needed -->
+  </section>
+  <script src="script.js"></script>
 </body>
 
 </html>

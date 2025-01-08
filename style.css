@@ -66,10 +66,28 @@ p {
   list-style-type: none;
 }
 
+.map-button.active {
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.map-button {
+  background: gray;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.map-button:not(.active):hover {
+  background: lightgray;
+}
+
 .tree-container ul li {
   position: relative;
   padding-left: 20px;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   /* Adjust vertical spacing between each button */
   left: 10px;
 }
@@ -116,8 +134,26 @@ p {
 }
 
 .tree-container {
-  position: relative;
-  left: 30%;
+  position: absolute;
+  left: 1400px;
+  top: 110px;
   transform: translateX(-10%);
   transform: translateY(10%);
+}
+
+.tree-button.active {
+  background: white !important;
+  /* Change this to your desired active color */
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.note {
+  font-family: 'STZhongsong';
+  font-size: 13px;
+  position: absolute;
+  top: 900px;
+  left: 150px;
+  width: 1300px;
+  color: white;
 }
