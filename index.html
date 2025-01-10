@@ -3,194 +3,783 @@
 <html lang="zh-CN"> <!-- Simplified Chinese -->
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrollytelling Template</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollytelling Template</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- noUiSlider CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="scrollytelling-container">
-    <section class="page" id="page1">
-      <div class="content">
-        <h1>Welcome to the Story</h1>
-        <p>This is the first page of the scrollytelling experience.</p>
-      </div>
-    </section>
+    <div class="scrollytelling-container">
+        <section class="page" id="page1">
+            <div class="content">
+                <h1 style="font-size: 70px; position: absolute; top: 38vh; left: 38vw;"> 一组中东新闻的分析 </h1>
+                <div style="position: absolute; width: 20vw; left: 39vw; top: 50vh; margin-left: 2em;">
+                    <p style="text-indent: 2em; text-align: left;">巴以冲突是中东地区自以色列建国之后一直存在的地域性矛盾，本轮巴以冲突自2023年10月7日阿克萨洪水行动开始。作为全球最为关注的热点，对新闻事件的分析又能够给我们带来什么不一样的信息呢?</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="page" id="page2">
-      <div class="content">
-        <h2>Chapter 1</h2>
-        <p>This is the second page of the story.</p>
-      </div>
-    </section>
+        <section class="page" id="page2">
 
-    <section class="page" id="page3">
-      <div class="content">
-        <h2>Chapter 2</h2>
-        <p>Here comes the third page!</p>
-      </div>
-    </section>
+            <head>
 
-    <section class="page" id="page4" style="background-color: black;">
-      <div class="tree-container">
-        <ul class="tree">
-          <li>
-            <button class="tree-button" data-number="1"
-              style="background: linear-gradient(90deg, black, #0000ff, #ff0000, black); color: rgb(255, 255, 255);width: 100%;">以色列&巴勒斯坦</button>
-            <ul>
-              <li>
-                <button class="tree-button" data-number="2"
-                  style="background: linear-gradient(90deg, black, #0000ff, black); color: rgb(255, 255, 255); width: 50%;">以色列</button>
-                <ul>
-                  <li>
-                    <button class="tree-button" data-number="3"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #0000ff); color: rgb(255, 255, 255); width: 30%;">战事</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="4"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 30%;">武装冲突</button>
-                      </li>
-                      <li><button class="tree-button" data-number="5"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 45%;">政府收复领土</button>
-                      </li>
-                      <li><button class="tree-button" data-number="6"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 75%;">非国家行为者占领领土</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="tree-button" data-number="7"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #0000ff); color: rgb(255, 255, 255); width: 55%;">爆炸/远程暴力</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="8"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 55%;">空中/无人机袭击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="9"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 65%;">炮击/火炮/导弹袭击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="10"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 15%;">榴弹</button>
-                      </li>
-                      <li><button class="tree-button" data-number="11"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 100%;">远程爆炸物/地雷/简易爆炸装置</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="tree-button" data-number="12"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #0000ff); color: rgb(255, 255, 255); width: 50%;">对平民暴力</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="13"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 15%;">攻击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="14"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 50%;">绑架/强迫失踪</button>
-                      </li>
-                      <li><button class="tree-button" data-number="15"
-                          style="background: linear-gradient(90deg, #0000ff, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 25%;">性暴力</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><button class="tree-button" data-number="16"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #0000ff); color: rgb(255, 255, 255); width: 30%;">其他</button>
-                  </li>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Scrollytelling Template</title>
+                <link rel="stylesheet" href="style.css">
+
+
+                <meta charset="utf-8">
+                <script src="echarts.min.js"></script>
+                <script src="echarts-wordcloud.min.js"></script>
+                <style>
+                    html,
+                    body {
+                        height: 100%;
+                        margin: 0;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    #main {
+                        width: 100%;
+                        height: 80%;
+                        margin: 0;
+                    }
+
+                    #title {
+                        position: absolute;
+                        top: 50px;
+                        font-size: 50px;
+                        font-style: bold;
+                        font-family: 'Times New Roman', Times, serif;
+                    }
+
+                    #subtitle {
+                        position: absolute;
+                        top: 120px;
+                        font-size: 30px;
+
+
+                    }
+
+                    #data-source {
+                        position: absolute;
+                        right: 50px;
+                        bottom: 50px;
+                        font-size: 20px;
+                    }
+                </style>
+            </head>
+
+            <body>
+                <div id="title-image-container" style="position: absolute; top: 3vh; left: 40vw;">
+                    <h1 style="font-size: 50px;"> 一、大家都在关注什么？ </h1>
+                </div>
+                <div id='main' style="position: absolute; top: 10vh; left: 1.5vw;"></div>
+                <div id="title-image-container" style="position: absolute; top: 70vh; left: 36vw;">
+                    <p style="font-size: 25px; width: 30vw; text-indent: 2em; text-align: left;"> 通过关键词分析，我们可以发现，对于来自中东的新闻，大多关于以色列、加沙、战争和美国。说明该地区冲突不断，且冲突双方主体为以色列和巴勒斯坦。那么关于战争新闻事件，我们自然而然的想问，它们发生在哪里？ </h1>
+                </div>
+                <script>
+                    var chart = echarts.init(document.getElementById('main'));
+
+                    var option = {
+                        tooltip: {},
+                        series: [{
+                            type: 'wordCloud',
+                            gridSize: 3,
+                            sizeRange: [20, 150],
+                            rotationRange: [-40, 50],
+                            shape: 'pentagon',
+                            width: 1600,
+                            height: 700,
+                            top: '5%',
+                            drawOutOfBound: true,
+                            textStyle: {
+                                color: function () {
+                                    return 'rgb(' + [
+                                        Math.round(Math.random() * 160),
+                                        Math.round(Math.random() * 160),
+                                        Math.round(Math.random() * 160)
+                                    ].join(',') + ')';
+                                }
+                            },
+                            emphasis: {
+                                textStyle: {
+                                    shadowBlur: 10,
+                                    shadowColor: '#333'
+                                }
+                            },
+                            data: [
+                                {
+                                    "name": "israel",
+                                    "value": 602
+                                },
+                                // {
+                                //     "name": "cnn",
+                                //     "value": 450
+                                // },
+                                {
+                                    "name": "middle",
+                                    "value": 374
+                                },
+                                {
+                                    "name": "east",
+                                    "value": 367
+                                },
+                                {
+                                    "name": "gaza",
+                                    "value": 313
+                                },
+                                {
+                                    "name": "us",
+                                    "value": 276
+                                },
+                                {
+                                    "name": "israeli",
+                                    "value": 263
+                                },
+                                {
+                                    "name": "iran",
+                                    "value": 216
+                                },
+                                {
+                                    "name": "reports",
+                                    "value": 198
+                                },
+                                {
+                                    "name": "war",
+                                    "value": 194
+                                },
+                                {
+                                    "name": "saudi",
+                                    "value": 173
+                                },
+                                {
+                                    "name": "military",
+                                    "value": 164
+                                },
+                                {
+                                    "name": "arab",
+                                    "value": 153
+                                },
+                                {
+                                    "name": "hamas",
+                                    "value": 147
+                                },
+                                {
+                                    "name": "arabia",
+                                    "value": 142
+                                },
+                                {
+                                    "name": "united",
+                                    "value": 139
+                                },
+                                {
+                                    "name": "attack",
+                                    "value": 127
+                                },
+                                {
+                                    "name": "president",
+                                    "value": 126
+                                },
+                                {
+                                    "name": "killed",
+                                    "value": 124
+                                },
+                                {
+                                    "name": "palestinians",
+                                    "value": 123
+                                },
+                                {
+                                    "name": "palestinian",
+                                    "value": 119
+                                },
+                                {
+                                    "name": "minister",
+                                    "value": 117
+                                },
+                                {
+                                    "name": "speaks",
+                                    "value": 115
+                                },
+                                {
+                                    "name": "said",
+                                    "value": 114
+                                },
+                                {
+                                    "name": "region",
+                                    "value": 113
+                                },
+                                {
+                                    "name": "conflict",
+                                    "value": 110
+                                },
+                                {
+                                    "name": "says",
+                                    "value": 106
+                                },
+                                {
+                                    "name": "forces",
+                                    "value": 101
+                                },
+                                {
+                                    "name": "syria",
+                                    "value": 100
+                                },
+                                {
+                                    "name": "country",
+                                    "value": 89
+                                },
+                                {
+                                    "name": "west",
+                                    "value": 88
+                                },
+                                {
+                                    "name": "world",
+                                    "value": 88
+                                },
+                                {
+                                    "name": "people",
+                                    "value": 85
+                                },
+                                {
+                                    "name": "tensions",
+                                    "value": 85
+                                },
+                                {
+                                    "name": "two",
+                                    "value": 84
+                                },
+                                {
+                                    "name": "according",
+                                    "value": 83
+                                },
+                                {
+                                    "name": "lebanon",
+                                    "value": 82
+                                },
+                                {
+                                    "name": "iranian",
+                                    "value": 82
+                                },
+                                {
+                                    "name": "city",
+                                    "value": 80
+                                },
+                                {
+                                    "name": "officials",
+                                    "value": 78
+                                },
+                                {
+                                    "name": "state",
+                                    "value": 74
+                                },
+                                {
+                                    "name": "foreign",
+                                    "value": 74
+                                },
+                                {
+                                    "name": "could",
+                                    "value": 70
+                                },
+                                {
+                                    "name": "new",
+                                    "value": 69
+                                },
+                                {
+                                    "name": "yemen",
+                                    "value": 68
+                                },
+                                {
+                                    "name": "states",
+                                    "value": 67
+                                },
+                                {
+                                    "name": "defense",
+                                    "value": 67
+                                },
+                                {
+                                    "name": "bank",
+                                    "value": 67
+                                },
+                                {
+                                    "name": "first",
+                                    "value": 65
+                                },
+                                {
+                                    "name": "strikes",
+                                    "value": 65
+                                },
+                                {
+                                    "name": "biden",
+                                    "value": 65
+                                },
+                                {
+                                    "name": "attacks",
+                                    "value": 64
+                                },
+                                {
+                                    "name": "amanpour",
+                                    "value": 64
+                                },
+                                {
+                                    "name": "one",
+                                    "value": 64
+                                },
+                                {
+                                    "name": "international",
+                                    "value": 63
+                                },
+                                {
+                                    "name": "christiane",
+                                    "value": 61
+                                },
+                                {
+                                    "name": "years",
+                                    "value": 61
+                                },
+                                {
+                                    "name": "former",
+                                    "value": 60
+                                },
+                                {
+                                    "name": "talks",
+                                    "value": 59
+                                },
+                                {
+                                    "name": "ground",
+                                    "value": 58
+                                },
+                                {
+                                    "name": "last",
+                                    "value": 57
+                                },
+                                {
+                                    "name": "airstrikes",
+                                    "value": 57
+                                },
+                                {
+                                    "name": "becky",
+                                    "value": 56
+                                },
+                                {
+                                    "name": "anderson",
+                                    "value": 56
+                                },
+                                {
+                                    "name": "jordan",
+                                    "value": 55
+                                },
+                                {
+                                    "name": "emirates",
+                                    "value": 55
+                                },
+                                {
+                                    "name": "fareed",
+                                    "value": 54
+                                },
+                                {
+                                    "name": "week",
+                                    "value": 53
+                                },
+                                {
+                                    "name": "launched",
+                                    "value": 53
+                                },
+                                {
+                                    "name": "strike",
+                                    "value": 53
+                                },
+                                {
+                                    "name": "prime",
+                                    "value": 52
+                                },
+                                {
+                                    "name": "northern",
+                                    "value": 52
+                                },
+                                {
+                                    "name": "hezbollah",
+                                    "value": 52
+                                },
+                                {
+                                    "name": "group",
+                                    "value": 51
+                                },
+                                {
+                                    "name": "since",
+                                    "value": 50
+                                },
+                                {
+                                    "name": "border",
+                                    "value": 50
+                                },
+                                {
+                                    "name": "jerusalem",
+                                    "value": 49
+                                },
+                                {
+                                    "name": "countries",
+                                    "value": 48
+                                },
+                                {
+                                    "name": "security",
+                                    "value": 48
+                                },
+                                {
+                                    "name": "tells",
+                                    "value": 48
+                                },
+                                {
+                                    "name": "monday",
+                                    "value": 47
+                                },
+                                {
+                                    "name": "following",
+                                    "value": 47
+                                },
+                                {
+                                    "name": "oil",
+                                    "value": 47
+                                },
+                                {
+                                    "name": "latest",
+                                    "value": 47
+                                },
+                                {
+                                    "name": "trump",
+                                    "value": 46
+                                },
+                                {
+                                    "name": "relations",
+                                    "value": 46
+                                },
+                                {
+                                    "name": "rafah",
+                                    "value": 46
+                                },
+                                {
+                                    "name": "diplomatic",
+                                    "value": 45
+                                },
+                                {
+                                    "name": "regional",
+                                    "value": 45
+                                },
+                                {
+                                    "name": "southern",
+                                    "value": 45
+                                },
+                                {
+                                    "name": "ben",
+                                    "value": 45
+                                },
+                                {
+                                    "name": "senior",
+                                    "value": 45
+                                },
+                                {
+                                    "name": "leader",
+                                    "value": 44
+                                },
+                                {
+                                    "name": "three",
+                                    "value": 44
+                                },
+                                {
+                                    "name": "friday",
+                                    "value": 44
+                                },
+                                {
+                                    "name": "wedeman",
+                                    "value": 44
+                                },
+                                {
+                                    "name": "secretary",
+                                    "value": 43
+                                },
+                                {
+                                    "name": "top",
+                                    "value": 42
+                                },
+                                {
+                                    "name": "violence",
+                                    "value": 42
+                                },
+                                {
+                                    "name": "across",
+                                    "value": 42
+                                }
+                            ]
+                        }]
+                    };
+
+                    chart.setOption(option);
+
+                    window.onresize = chart.resize;
+                </script>
+            </body>
+
+        </section>
+
+
+
+        <div class="iframe-container">
+            <!-- <section class="page" id="page3">
+                <style>
+                    #title3 {
+                        position: absolute;
+                        top: 2px;
+                        font-size: 32px;
+                        font-style: bold;
+                        font-family: 'Times New Roman', Times, serif;
+                    }
+
+                    #subtitle3 {
+                        position: absolute;
+                        top: 30px;
+                        font-size: 12px;
+
+
+                    }
+                </style>
+
+                <div id="title3">K-means Cluster of Texts</div>
+                <div id="subtitle3">--Visualization of Text Similarity</div>
+                <iframe src="cluster_test.html" width="95%" height="95%" frameborder="0"></iframe>
+            </section> -->
+            <section class="page" id="page4">
+                <!-- <style>
+                    #title3 {
+                        position: absolute;
+                        top: 2px;
+                        font-size: 50px;
+                        font-style: bold;
+                        font-family: 'Times New Roman', Times, serif;
+                    }
+
+                    #subtitle3 {
+                        position: absolute;
+                        top: 60px;
+                        font-size: 28px;
+
+
+                    } -->
+                <!-- </style> -->
+                <iframe src="bar-race.html" width="95%" height="95%" frameborder="0"></iframe>
+            </section>
+        </div>
+
+        <section class="page" id="page5">
+            <div id="title-image-container" style="position: absolute; top: 1vh; left: 43vw;">
+                <h1 style="font-size: 50px;"> 二、事件都发生在哪里？ </h1>
+            </div>
+            <div style="position: absolute; width: 10vw; top: 16vh; left: 84vw;">
+                <p style="font-size: 25px; text-indent: 2em; text-align: left;"> 通过地图，我们可以看见，多数事件发生在加沙境内，而且多集中于加沙的城市地区，尤其以加沙北部为重，而这些和新闻中经常报道的地区不谋而合。而以色列方面的巨大事件只有零星几个，且都是和阿克萨洪水行动有关，自那之后以色列方面再无相关事件。</p>
+                <p style="font-size: 25px; text-indent: 2em; text-align: left;"> 由此我们可以初见战场态势，似乎此次冲突并不是双方实力相当，而是由以色列方面主导的单方面碾压的战争。</p>
+            </div>
+            <!-- <div class="transparent-box" style="position: absolute; top: 7.5vh; left: 1.5vw; width: 81vw; height: 91vh;"></div> -->
+            <div class="content" style="position: absolute; top: 6vh; left: 2vw;">
+              <!-- Map Container -->
+              <div id="mapContainer"> </div>
+      
+                    <div id="filters" style="margin-top: 1rem;">
+                        <label style="height: 1vh;">
+                        <input type="checkbox" id="fatalitiesFilter" />
+                        仅显示死亡人数 ≥ 20 的事件
+                        </label>
+                        <label>
+                        <input type="checkbox" id="cumulativeFilter" />
+                        显示当前及之前所有时间的事件
+                        </label>
+                    </div>
+      
+                    <div>
+                        <div id="slider"></div>
+                        <div id="sliderTooltip"></div>
+                    </div>
+            </div>
+          </section>
+
+        <section class="page" id="page6" style="background-color: #f0f0f0;">
+            <div class="tree-container">
+                <ul class="tree">
+                    <li>
+                        <button class="tree-button" data-number="1"
+                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff, #ff0000, rgb(255, 255, 255)); color: rgb(0, 0, 0);width: 100%;">以色列&巴勒斯坦</button>
+                        <ul>
+                            <li>
+                                <button class="tree-button" data-number="2"
+                                    style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff, rgb(255, 255, 255)); color: black; width: 50%;">以色列</button>
+                                <ul>
+                                    <li>
+                                        <button class="tree-button" data-number="3"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff); color: black; width: 30%;">战事</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="4"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 30%;">武装冲突</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="5"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 45%;">政府收复领土</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="6"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 75%;">非国家行为者占领领土</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button class="tree-button" data-number="7"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff); color: black; width: 55%;">爆炸/远程暴力</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="8"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 55%;">空中/无人机袭击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="9"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 65%;">炮击/火炮/导弹袭击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="10"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 15%;">榴弹</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="11"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 100%;">远程爆炸物/地雷/简易爆炸装置</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button class="tree-button" data-number="12"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff); color: black; width: 50%;">对平民暴力</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="13"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 15%;">攻击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="14"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 50%;">绑架/强迫失踪</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="15"
+                                                    style="background: linear-gradient(90deg, #a4a4ff, rgb(255, 255, 255)); color: black; width: 25%;">性暴力</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><button class="tree-button" data-number="16"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #a4a4ff); color: black; width: 30%;">其他</button>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="tree-button" data-number="17"
+                                    style="background: linear-gradient(90deg, rgb(255, 255, 255), #ff0000, rgb(255, 255, 255)); color: black; width: 50%;">巴勒斯坦</button>
+                                <ul>
+                                    <li>
+                                        <button class="tree-button" data-number="18"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #ff0000); color: black; width: 30%;">战事</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="19"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 30%;">武装冲突</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button class="tree-button" data-number="20"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #ff0000); color: black; width: 60%;">爆炸/远程暴力</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="21"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 55%;">空中/无人机袭击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="22"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 65%;">炮击/火炮/导弹袭击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="23"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 15%;">榴弹</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="24"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 100%;">远程爆炸物/地雷/简易爆炸装置</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button class="tree-button" data-number="25"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #ff0000); color: black; width: 50%;">对平民暴力</button>
+                                        <ul>
+                                            <li><button class="tree-button" data-number="26"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 15%;">攻击</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="27"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 50%;">绑架/强迫失踪</button>
+                                            </li>
+                                            <li><button class="tree-button" data-number="28"
+                                                    style="background: linear-gradient(90deg, #ff0000, rgb(255, 255, 255)); color: black; width: 25%;">性暴力</button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><button class="tree-button" data-number="29"
+                                            style="background: linear-gradient(90deg, rgb(255, 255, 255), #ff0000); color: black; width: 30%;">其他</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-              <li>
-                <button class="tree-button" data-number="17"
-                  style="background: linear-gradient(90deg, black, #ff0000, black); color: rgb(255, 255, 255); width: 50%;">巴勒斯坦</button>
-                <ul>
-                  <li>
-                    <button class="tree-button" data-number="18"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #ff0000); color: rgb(255, 255, 255); width: 30%;">战事</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="19"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 30%;">武装冲突</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="tree-button" data-number="20"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #ff0000); color: rgb(255, 255, 255); width: 60%;">爆炸/远程暴力</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="21"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 55%;">空中/无人机袭击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="22"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 65%;">炮击/火炮/导弹袭击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="23"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 15%;">榴弹</button>
-                      </li>
-                      <li><button class="tree-button" data-number="24"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 100%;">远程爆炸物/地雷/简易爆炸装置</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="tree-button" data-number="25"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #ff0000); color: rgb(255, 255, 255); width: 50%;">对平民暴力</button>
-                    <ul>
-                      <li><button class="tree-button" data-number="26"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 15%;">攻击</button>
-                      </li>
-                      <li><button class="tree-button" data-number="27"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 50%;">绑架/强迫失踪</button>
-                      </li>
-                      <li><button class="tree-button" data-number="28"
-                          style="background: linear-gradient(90deg, #ff0000, rgb(0, 7, 41)); color: rgb(255, 255, 255); width: 25%;">性暴力</button>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><button class="tree-button" data-number="29"
-                      style="background: linear-gradient(90deg, rgb(0, 7, 41), #ff0000); color: rgb(255, 255, 255); width: 30%;">其他</button>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+            </div>
 
-      <div style="position: absolute; top: 200px; left: 100px;">
-        <button id="map1-button" class="map-button active">分日图</button>
-        <button id="map2-button" class="map-button">累积图</button>
-      </div>
+            <div style="position: absolute; top: 18vh; left: 18vw;">
+                <button id="map1-button" class="map-button active">分日图</button>
+                <button id="map2-button" class="map-button">累积图</button>
+            </div>
 
-      <div id="chart-container" style="position: absolute; top: 300px; left: 100px; width: 1300px; height: 600px;">
-        <canvas id="chart-canvas" style="width: 100%; height: 100%;"></canvas>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <div id="note" class="note">
-        <p style="color: white;font-weight: bold;">备注：</p>
-        <ol>
-          <li>所有折线竖直堆叠，以展示每日死亡人数的总和</li>
-          <li>鼠标悬停在每条折线每日的圆圈处，可显示该折线当日的数据</li>
-          <li>横坐标“日期数”的起点0是2024/10/07，并且由于2024年为闰年，因此终点为365，即2024/10/06</li>
-          <li>数据来源为 <a href="https://acleddata.com/data-export-tool/#1730284648932-9740f4cf-3200"
-              target="_blank" style="color: white;">ACLED</a>
-          </li>
-        </ol>
-      </div>
-      <div id="title-image-container" style="position: absolute; top: 60px; left: 80px;">
-        <img src="title1.png" alt="Title Image" id="title-image" style="width: 400px; height: auto;">
-      </div>
-      <div id="title-image-container" style="position: absolute; top: 65px; left: 1300px;">
-        <img src="title2.png" alt="Title Image" id="title-image" style="width: 450px; height: auto;">
-      </div>
+            <div id="chart-container"
+                style="position: absolute; top: 25vh; left: 16vw; width: 1300px; height: 600px;">
+                <canvas id="chart-canvas" style="width: 100%; height: 100%;"></canvas>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <div id="note" class="note">
+                <p style="color: black;font-weight: bold;">备注：</p>
+                <ol>
+                    <li style="color: black">所有折线竖直堆叠，以展示每日死亡人数的总和</li>
+                    <li style="color: black">鼠标悬停在每条折线每日的圆圈处，可显示该折线当日的数据</li>
+                    <li style="color: black">横坐标“日期数”的起点0是2023/10/07，并且由于2024年为闰年，因此终点为365，即2024/10/06</li>
+                    <li  style="color: black">数据来源为 <a href="https://acleddata.com/data-export-tool/#1730284648932-9740f4cf-3200"
+                            target="_blank" style="color: black;">ACLED</a>
+                    </li>
+                </ol>
+            </div>
+            <div id="title-image-container" style="position: absolute; top: 5vh; left: 40vw;">
+                <h1 style="font-size: 50px;"> 三、双方伤亡的态势又如何？ </h1>
+            </div>
+            <div style="position: absolute; width: 40vw; top: 80vh; left: 28vw;">
+                <p style="font-size: 25px; text-indent: 2em; text-align: left;"> 通过图表我们可以清楚的看见，双方的伤亡不成比例，再次证明了双发军备实力的不对等，以及战争态势呈现以色列的单方面碾压。</p>
+                <p style="font-size: 25px; text-indent: 2em; text-align: left;"> 除此之外随着日期往后，死亡人数越来越少，这和国际多方为加沙地区停火止战做出的努力息息相关。</p>
+            </div>
+            <!-- <div class="transparent-box" style="position: absolute; top: 7.5vh; left: 1.5vw; width: 81vw; height: 91vh;"></div> -->
+        </section>
+        <section class="page" id="page7" style="background-color: #f0f0f0;">
+            <div class="content">
+                <h1 style="font-size: 70px; position: absolute; top: 38vh; left: 45vw;"> 感谢观看 </h1>
+                <div style="position: absolute; width: 20vw; left: 39vw; top: 50vh; margin-left: 2em;">
+                <p style="text-indent: 2em; text-align: left;">通过对新闻的分析，我们看到中东的问题多是以色列和巴勒斯坦的冲突，同时也看到战争的形态是处于单方面碾压的形态。但是同时我们也看到了一些积极的信息，随着时间的推移，死亡人数越来越少，这似乎预示着此轮冲突的结束？</p>
+                </div>
+            </div>
+        </section>
+    </div>
     </section>
-    <!-- <section>
-      <div id="display"
-        style="position: fixed; right: 0; top: 0; background: rgba(255, 255, 255, 0.8); padding: 10px; border: 1px solid #ccc;">
-      </div>
-      <p id="display-text">Press a button</p> -->
-  </div>
-  </section>
 
-  <!-- Add more pages as needed -->
-  </section>
-  <script src="script.js"></script>
+    <!-- Add more pages as needed -->
+    </section>
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- noUiSlider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,255 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Observe all sections
   sections.forEach(section => observer.observe(section));
+
+  initMapAndSlider();
 });
+
+/**
+ * 卿负责的 chapter 所需的 js
+ */
+function initMapAndSlider() {
+  const mapContainer = document.getElementById('mapContainer');
+  const slider = document.getElementById('slider');
+  const sliderTooltip = document.getElementById('sliderTooltip');
+  const fatalitiesFilter = document.getElementById('fatalitiesFilter');
+  const cumulativeFilter = document.getElementById('cumulativeFilter');
+
+  if (!mapContainer) {
+      console.error('地图容器未找到！');
+      return;
+  }
+
+  if (!slider || !sliderTooltip) {
+      console.error('滑块容器或工具提示未找到！');
+      return;
+  }
+
+  // 初始化 Leaflet 地图
+  //  "lat": 31.40552229724022,
+  //  "lng": 34.42136764526368
+  // zoom: 12
+  const map = L.map(mapContainer).setView([31.40552229724022, 34.42136764526368], 12);
+
+  // 添加 OpenStreetMap 图层
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 初始化一个图层组，用于动态更新标记
+  const markersLayer = L.layerGroup().addTo(map);
+
+  // 加载 CSV 数据（使用分号作为分隔符）
+  d3.dsv(';', 'map_data/tmp.csv').then(function(data) {
+      console.log('CSV 数据加载成功。');
+
+      // 处理数据
+      const allData = [];
+
+      data.forEach(function(d, index) {
+          // 解析经纬度和死亡人数
+          d.latitude = parseFloat(d.latitude);
+          d.longitude = parseFloat(d.longitude);
+          d.fatalities = parseInt(d.fatalities, 10);
+
+          // 使用 moment.js 解析日期，严格模式
+          d.date = moment(d.event_date, 'D MMMM YYYY', true);
+          if (d.date.isValid()) {
+              d.month = d.date.format('MMMM YYYY'); // 提取月份和年份，如 "October 2023"
+          } else {
+              d.month = null; // 无效日期标记为 null
+              console.warn(`数据行 ${index + 1} 的日期无效: event_date=${d.event_date}`);
+          }
+
+          // 检查经纬度是否为有效数字
+          if (isNaN(d.latitude) || isNaN(d.longitude)) {
+              console.warn(`数据行 ${index + 1} 的经纬度无效: latitude=${d.latitude}, longitude=${d.longitude}`);
+              return; // 跳过此条数据
+          }
+
+          // 仅添加有效日期的记录
+          if (d.month !== null) {
+              allData.push(d);
+          }
+
+          // 打印解析后的 description
+          //console.log(`数据行 ${index + 1} 的描述: ${d.description}`);
+      });
+
+      console.log(`有效数据条数: ${allData.length}`);
+
+      // 获取所有唯一的月份
+      const uniqueMonths = Array.from(new Set(allData.map(d => d.month))).sort(function(a, b) {
+          return moment(a, 'MMMM YYYY').diff(moment(b, 'MMMM YYYY'));
+      });
+
+      console.log('唯一月份:', uniqueMonths);
+
+      if (uniqueMonths.length === 0) {
+          console.error('没有找到唯一的月份数据。');
+          return;
+      }
+
+      // 创建 noUiSlider
+      noUiSlider.create(slider, {
+          start: 12,
+          range: {
+              min: 0,
+              max: uniqueMonths.length - 1
+          },
+          step: 1,
+          tooltips: false, // 使用自定义工具提示
+          format: {
+              to: function(value) { return value; },
+              from: function(value) { return Number(value); }
+          },
+          pips: {
+              mode: 'count',
+              values: uniqueMonths.length,
+              density: 100,
+              format: {
+                  to: function(value) {
+                      return uniqueMonths[value];
+                  },
+                  from: function(value) {
+                      return Number(value);
+                  }
+              }
+          }
+      });
+
+      // 初始化工具提示
+      sliderTooltip.innerHTML = '选中月份: ' + uniqueMonths[0];
+
+      // 定义一个函数来获取当前选中的月份
+      function getSelectedMonth() {
+          const sliderValues = slider.noUiSlider.get();
+          const index = Math.round(sliderValues);
+          return uniqueMonths[index];
+      }
+
+      // 定义一个函数来获取是否启用了死亡人数过滤
+      function isFatalitiesFilterEnabled() {
+          return fatalitiesFilter.checked;
+      }
+
+      // 定义一个函数来获取是否启用了累积显示过滤
+      function isCumulativeFilterEnabled() {
+          return cumulativeFilter.checked;
+      }
+
+      // 定义一个函数来获取过滤后的数据
+      
+      function getFilteredData() {
+          let filteredData = [];
+
+          if (isCumulativeFilterEnabled()) {
+              // 如果启用了累积显示，获取所有时间 <= 选中时间的数据
+              const selectedMonth = getSelectedMonth();
+              const selectedDate = moment(selectedMonth, 'MMMM YYYY');
+              filteredData = allData.filter(d => moment(d.month, 'MMMM YYYY').isSameOrBefore(selectedDate));
+          } else {
+              // 否则，只获取选中时间的数据
+              const selectedMonth = getSelectedMonth();
+              filteredData = allData.filter(d => d.month === selectedMonth);
+          }
+
+          if (isFatalitiesFilterEnabled()) {
+              // 如果启用了死亡人数过滤，进一步过滤
+              filteredData = filteredData.filter(d => d.fatalities >= 20);
+          }
+
+          return filteredData;
+      }
+
+      // 创建一个函数来更新地图
+      function refreshMap() {
+          const filteredData = getFilteredData();
+          updateMap(map, markersLayer, filteredData);
+      }
+
+      // 滑块更新时更新工具提示
+      slider.noUiSlider.on('update', function(values, handle) {
+          const selectedMonth = getSelectedMonth();
+          sliderTooltip.innerHTML = '选中月份: ' + selectedMonth;
+      });
+
+      // 滑块改变时更新地图
+      slider.noUiSlider.on('change', function(values, handle) {
+          refreshMap();
+      });
+
+      // 勾选框改变时更新地图
+      fatalitiesFilter.addEventListener('change', function() {
+          refreshMap();
+      });
+
+      cumulativeFilter.addEventListener('change', function() {
+          refreshMap();
+      });
+
+      // 初始显示第一个月份的数据
+      cumulativeFilter.checked = true; // 累计显示
+      fatalitiesFilter.checked = false; // 不显示高于 20 的死亡人数
+      refreshMap();
+
+      // 调整地图大小，确保正确渲染
+      setTimeout(() => {
+          map.invalidateSize();
+      }, 100); // 延迟一段时间，确保容器尺寸已更新
+});
+}
+
+// 定义 updateMap 函数在 initMapAndSlider 函数之外
+function updateMap(map, markersLayer, filteredData) {
+console.log(`开始更新地图，显示数据条数: ${filteredData.length}`);
+
+// 清除之前的标记
+markersLayer.clearLayers();
+
+// 添加标记到地图
+filteredData.forEach(function(d) {
+    // 根据 flag 设置颜色
+    const color = d.flag === 'pse' ? 'red' : 'blue';
+
+    // 根据 fatalities 设置圆的半径
+    const radius = d.fatalities ? Math.sqrt(d.fatalities) * 1.3 : 1.3;
+
+    // 创建圆形标记
+    const circle = L.circleMarker([d.latitude, d.longitude], {
+        color: color,
+        radius: radius,
+        fillOpacity: 0.7
+    });
+
+    // 创建弹出内容
+  const popupContent = `
+  <div class="popup-content">
+      <h3>What happened here?</h3>
+      <p>${d.notes}</p>
+      <p>------------------------------</p>
+      ${
+          d.title && d.title.trim() !== '' ? `
+              <h4>Related News</h4>
+              <p>${d.title}</p>
+              <a href="${d.link}" target="_blank">阅读更多</a>
+          ` : ''
+      }
+  </div>
+  `;
+
+    circle.bindPopup(popupContent);
+
+    // 添加到标记图层
+    markersLayer.addLayer(circle);
+});
+
+// 调整地图大小，确保正确渲染
+map.invalidateSize();
+}
+/**
+* END 卿
+*/
 
 document.addEventListener('DOMContentLoaded', function () {
   const map1DataMapping = {
@@ -69,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
     13: { file: 'fatalities_data/final_ISR/ISR-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Attack_cumsum' },
     14: { file: 'fatalities_data/final_ISR/ISR-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Sexual violence_cumsum' },
     15: { file: 'fatalities_data/final_ISR/ISR-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Abduction/forced disappearance_cumsum' },
-    16: { file: 'fatalities_data/final_ISR/others_ISR.csv', column: 'Others_sum' },
+    16: { file: 'fatalities_data/final_ISR/others_ISR.csv', column: 'Others_cumsum' },
     17: { file: 'fatalities_data/root/root.csv', column: 'total_PSE_sum' },
     18: { file: 'fatalities_data/final_PSE/cumulative_sorted_result_PSE.csv', column: 'Battles_sum' },
     19: { file: 'fatalities_data/final_PSE/PSE-Battles-Fatalities_sorted_cumulative.csv', column: 'Armed clash_cumsum' },
@@ -82,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
     26: { file: 'fatalities_data/final_PSE/PSE-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Attack_cumsum' },
     27: { file: 'fatalities_data/final_PSE/PSE-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Sexual violence_cumsum' },
     28: { file: 'fatalities_data/final_PSE/PSE-ViolenceAgainstCivilians-Fatalities_sorted_cumulative.csv', column: 'Abduction/forced disappearance_cumsum' },
-    29: { file: 'fatalities_data/final_PSE/others_PSE.csv', column: 'Others_sum' },
+    29: { file: 'fatalities_data/final_PSE/others_PSE.csv', column: 'Others_cumsum' },
     // Add more mappings as needed
   };
 
@@ -170,14 +418,14 @@ document.addEventListener('DOMContentLoaded', function () {
           title: {
             display: true,
             text: '日期数',
-            color: 'white',
+            color: 'black',
             font: {
               size: 16,
               family: 'STZhongsong'
             }
           },
           ticks: {
-            color: 'white',
+            color: 'black',
             font: {
               size: 12,
               family: 'STZhongsong'
@@ -189,14 +437,14 @@ document.addEventListener('DOMContentLoaded', function () {
           title: {
             display: true,
             text: '死亡人数',
-            color: 'white',
+            color: 'black',
             font: {
               size: 16,
               family: 'STZhongsong'
             }
           },
           ticks: {
-            color: 'white',
+            color: 'black',
             font: {
               size: 12,
               family: 'STZhongsong'
@@ -237,4 +485,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   buttons[0].classList.add('active'); // Set the root button as active on load
+  buttons[0].click();
 });

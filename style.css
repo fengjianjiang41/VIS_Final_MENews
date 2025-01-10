@@ -8,6 +8,7 @@ body {
   font-family: 'Noto Sans SC', 'Microsoft YaHei', 'SimSun', 'STZhongsong', Arial, sans-serif;
   height: 100%;
   overflow-x: hidden;
+  z-index: 10;
 }
 
 .scrollytelling-container {
@@ -26,11 +27,14 @@ html {
   justify-content: center;
   position: relative;
   transition: transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s, transform 1s;
 }
 
 .page .content {
   text-align: center;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
 }
 
@@ -49,12 +53,6 @@ p {
 
 .page:nth-child(even) {
   background-color: #e0e0e0;
-}
-
-.page {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 1s, transform 1s;
 }
 
 .page.in-view {
@@ -108,9 +106,9 @@ p {
 }
 
 .tree-container ul li button:hover {
-  background: white !important;
+  background: black !important;
   /* Change background color on hover */
-  color: black !important;
+  color: white !important;
   /* Change text color on hover */
   font-weight: bold !important;
   /* Make text bold on hover */
@@ -135,25 +133,149 @@ p {
 
 .tree-container {
   position: absolute;
-  left: 1400px;
-  top: 110px;
+  left: 69vw;
+  top: 15vh;
   transform: translateX(-10%);
   transform: translateY(10%);
 }
 
 .tree-button.active {
-  background: white !important;
+  background: black !important;
   /* Change this to your desired active color */
-  color: black !important;
+  color: white !important;
   font-weight: bold !important;
 }
-
 .note {
   font-family: 'STZhongsong';
   font-size: 13px;
   position: absolute;
-  top: 900px;
-  left: 150px;
+  top: 68vh;
+  left: 18vw;
   width: 1300px;
   color: white;
 }
+
+.iframe-container{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.iframe{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.transparent-box {
+    border: 3px solid rgb(56, 56, 56);
+    background-color: transparent;
+    display: inline-block;
+}
+
+/********************************** 
+卿负责的 Chapter 所需的 CSS
+**********************************/ 
+/* 地图容器样式 */
+#mapContainer {
+  width: 80vw;
+  height: 80vh; /* 增加高度，从400px调整为600px */
+  margin-top: 2rem;
+  border: 1px solid #ccc; /* 用于调试，可根据需要移除 */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加阴影效果 */
+}
+
+/* 滑块容器样式 */
+#slider {
+  width: 80%;
+  margin: 0px auto;
+  height: 2.5vh; /* 调整滑块高度 */
+  background-color: rgba(240, 240, 240, 0.9); /* 半透明背景 */
+  border: 1px solid #ccc; /* 边框用于调试 */
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加阴影 */
+}
+
+/* 滑块工具提示样式 */
+#sliderTooltip {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+/* 隐藏默认的 noUiSlider tooltip */
+.noUi-tooltip {
+  display: none;
+}
+
+/* 调整 noUiSlider 的手柄和轨道 */
+#slider .noUi-target {
+  height: 1vh;
+}
+
+#slider .noUi-handle {
+  width: 20px;
+  height: 20px;
+  top: 5px;
+}
+
+/* 隐藏 pips（刻度标签） */
+#slider .noUi-pips {
+  display: none;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 600px) {
+  #mapContainer {
+      height: 400px; /* 调整地图高度 */
+  }
+
+  #slider {
+      height: 40px; /* 调整滑块高度 */
+  }
+
+  #slider .noUi-target {
+      height: 20px; /* 调整滑块轨道高度 */
+  }
+
+  #slider .noUi-handle {
+      width: 15px;
+      height: 15px;
+      top: 2.5px;
+  }
+
+  #sliderTooltip {
+      font-size: 14px; /* 调整滑块工具提示字体大小 */
+  }
+}
+
+/* 过滤选项容器样式 */
+#filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#filters label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+#filters input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+/********************************** 
+END 卿
+**********************************/ 

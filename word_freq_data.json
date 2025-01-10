@@ -1,0 +1,402 @@
+[
+    {
+        "name": "israel",
+        "value": 602
+    },
+    {
+        "name": "cnn",
+        "value": 450
+    },
+    {
+        "name": "middle",
+        "value": 374
+    },
+    {
+        "name": "east",
+        "value": 367
+    },
+    {
+        "name": "gaza",
+        "value": 313
+    },
+    {
+        "name": "us",
+        "value": 276
+    },
+    {
+        "name": "israeli",
+        "value": 263
+    },
+    {
+        "name": "iran",
+        "value": 216
+    },
+    {
+        "name": "reports",
+        "value": 198
+    },
+    {
+        "name": "war",
+        "value": 194
+    },
+    {
+        "name": "saudi",
+        "value": 173
+    },
+    {
+        "name": "military",
+        "value": 164
+    },
+    {
+        "name": "arab",
+        "value": 153
+    },
+    {
+        "name": "hamas",
+        "value": 147
+    },
+    {
+        "name": "arabia",
+        "value": 142
+    },
+    {
+        "name": "united",
+        "value": 139
+    },
+    {
+        "name": "attack",
+        "value": 127
+    },
+    {
+        "name": "president",
+        "value": 126
+    },
+    {
+        "name": "killed",
+        "value": 124
+    },
+    {
+        "name": "palestinians",
+        "value": 123
+    },
+    {
+        "name": "palestinian",
+        "value": 119
+    },
+    {
+        "name": "minister",
+        "value": 117
+    },
+    {
+        "name": "speaks",
+        "value": 115
+    },
+    {
+        "name": "said",
+        "value": 114
+    },
+    {
+        "name": "region",
+        "value": 113
+    },
+    {
+        "name": "conflict",
+        "value": 110
+    },
+    {
+        "name": "says",
+        "value": 106
+    },
+    {
+        "name": "forces",
+        "value": 101
+    },
+    {
+        "name": "syria",
+        "value": 100
+    },
+    {
+        "name": "country",
+        "value": 89
+    },
+    {
+        "name": "west",
+        "value": 88
+    },
+    {
+        "name": "world",
+        "value": 88
+    },
+    {
+        "name": "people",
+        "value": 85
+    },
+    {
+        "name": "tensions",
+        "value": 85
+    },
+    {
+        "name": "two",
+        "value": 84
+    },
+    {
+        "name": "according",
+        "value": 83
+    },
+    {
+        "name": "lebanon",
+        "value": 82
+    },
+    {
+        "name": "iranian",
+        "value": 82
+    },
+    {
+        "name": "city",
+        "value": 80
+    },
+    {
+        "name": "officials",
+        "value": 78
+    },
+    {
+        "name": "state",
+        "value": 74
+    },
+    {
+        "name": "foreign",
+        "value": 74
+    },
+    {
+        "name": "could",
+        "value": 70
+    },
+    {
+        "name": "new",
+        "value": 69
+    },
+    {
+        "name": "yemen",
+        "value": 68
+    },
+    {
+        "name": "states",
+        "value": 67
+    },
+    {
+        "name": "defense",
+        "value": 67
+    },
+    {
+        "name": "bank",
+        "value": 67
+    },
+    {
+        "name": "first",
+        "value": 65
+    },
+    {
+        "name": "strikes",
+        "value": 65
+    },
+    {
+        "name": "biden",
+        "value": 65
+    },
+    {
+        "name": "attacks",
+        "value": 64
+    },
+    {
+        "name": "amanpour",
+        "value": 64
+    },
+    {
+        "name": "one",
+        "value": 64
+    },
+    {
+        "name": "international",
+        "value": 63
+    },
+    {
+        "name": "christiane",
+        "value": 61
+    },
+    {
+        "name": "years",
+        "value": 61
+    },
+    {
+        "name": "former",
+        "value": 60
+    },
+    {
+        "name": "talks",
+        "value": 59
+    },
+    {
+        "name": "ground",
+        "value": 58
+    },
+    {
+        "name": "last",
+        "value": 57
+    },
+    {
+        "name": "airstrikes",
+        "value": 57
+    },
+    {
+        "name": "becky",
+        "value": 56
+    },
+    {
+        "name": "anderson",
+        "value": 56
+    },
+    {
+        "name": "jordan",
+        "value": 55
+    },
+    {
+        "name": "emirates",
+        "value": 55
+    },
+    {
+        "name": "fareed",
+        "value": 54
+    },
+    {
+        "name": "week",
+        "value": 53
+    },
+    {
+        "name": "launched",
+        "value": 53
+    },
+    {
+        "name": "strike",
+        "value": 53
+    },
+    {
+        "name": "prime",
+        "value": 52
+    },
+    {
+        "name": "northern",
+        "value": 52
+    },
+    {
+        "name": "hezbollah",
+        "value": 52
+    },
+    {
+        "name": "group",
+        "value": 51
+    },
+    {
+        "name": "since",
+        "value": 50
+    },
+    {
+        "name": "border",
+        "value": 50
+    },
+    {
+        "name": "jerusalem",
+        "value": 49
+    },
+    {
+        "name": "countries",
+        "value": 48
+    },
+    {
+        "name": "security",
+        "value": 48
+    },
+    {
+        "name": "tells",
+        "value": 48
+    },
+    {
+        "name": "monday",
+        "value": 47
+    },
+    {
+        "name": "following",
+        "value": 47
+    },
+    {
+        "name": "oil",
+        "value": 47
+    },
+    {
+        "name": "latest",
+        "value": 47
+    },
+    {
+        "name": "trump",
+        "value": 46
+    },
+    {
+        "name": "relations",
+        "value": 46
+    },
+    {
+        "name": "rafah",
+        "value": 46
+    },
+    {
+        "name": "diplomatic",
+        "value": 45
+    },
+    {
+        "name": "regional",
+        "value": 45
+    },
+    {
+        "name": "southern",
+        "value": 45
+    },
+    {
+        "name": "ben",
+        "value": 45
+    },
+    {
+        "name": "senior",
+        "value": 45
+    },
+    {
+        "name": "leader",
+        "value": 44
+    },
+    {
+        "name": "three",
+        "value": 44
+    },
+    {
+        "name": "friday",
+        "value": 44
+    },
+    {
+        "name": "wedeman",
+        "value": 44
+    },
+    {
+        "name": "secretary",
+        "value": 43
+    },
+    {
+        "name": "top",
+        "value": 42
+    },
+    {
+        "name": "violence",
+        "value": 42
+    },
+    {
+        "name": "across",
+        "value": 42
+    }
+]
